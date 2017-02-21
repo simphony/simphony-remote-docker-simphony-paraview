@@ -19,7 +19,7 @@ RUN apt-get update -qq \
     && cd /tmp/simphony-framework \
     && git checkout 0.3.1 \
     && make deps apt-paraview-deps venv-prepare \
-    && source $SIMPHONYENV/bin/activate \
+    && . $SIMPHONYENV/bin/activate \
     && make simphony simphony-paraview \
     && cp -rf /root/OpenFOAM/-2.3.0/platforms/linux64GccDPOpt/lib/* $SIMPHONYENV/lib \
     && wget https://github.com/simphony/simphony-paraview/releases/download/0.2.0/examples.zip -O /tmp/simphony-framework/examples.zip \
@@ -29,7 +29,7 @@ RUN apt-get update -qq \
     && mv examples /etc/skel/Desktop/ \
     && cd \
     && rm -rf /tmp/simphony-framework \
-    && apt-get install -y ipython ipython-qtconsole 
+    && apt-get install -y ipython ipython-qtconsole \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/* \
